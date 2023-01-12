@@ -8,6 +8,10 @@ PATH = "../../LeetCode/"
 
 # create a folder with the name of the problem if not exists
 def create_folder(folder_name):
+    if not os.path.exists(PATH):
+        print(f"Path {PATH} does not exist")
+        exit()
+    
     path_ = f"{PATH}{folder_name}"
     if not os.path.exists(path_):
         os.mkdir(path_)
@@ -60,6 +64,7 @@ def extract_problem(url):
 
     description_tag = soup.find('div', class_='_1l1MA').contents
 
+    # create folder + also checks if the path is valid
     create_folder(folder_name)
 
     # storing the problem description in a README.md file
