@@ -1,4 +1,4 @@
-# Leetcode Scrapper
+# Leetcode Scraper
 <p>Uses Selenium and BeautifulSoup to scrape the description of a LeetCode problem and creates a <code>README.md</code> file along side a <code>main.cpp</code> file.</p>
 
 <p>To use the functionality of this code, fork the repository or clone it. Run the main.py file using this format:</p>
