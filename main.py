@@ -4,7 +4,7 @@ import os
 import sys
 
 # path to my LeetCode git repo
-PATH = "../../LeetCode/"
+PATH = ".,/,,/LeetCode/"
 
 # create a folder with the name of the problem if not exists
 def create_folder(folder_name):
@@ -50,7 +50,7 @@ def extract_problem(url):
     driver = webdriver.Chrome()
     driver.get(url)
 
-    driver.implicitly_wait(3)
+    driver.implicitly_wait(15)
 
     soup = bs4.BeautifulSoup(driver.page_source, 'html.parser')
 
@@ -60,7 +60,7 @@ def extract_problem(url):
     title_l = title.split()[1:] # remove the number
     title = ' '.join(title_l) # join the list
 
-    difficulty = soup.find('div', class_='mt-3').div.div.text
+    difficulty = soup.find('div', class_='mt-3').div.text
 
     description_tag = soup.find('div', class_='_1l1MA').contents
 
