@@ -4,7 +4,7 @@ import os
 import sys
 
 # path to my LeetCode git repo
-PATH = ".,/,,/LeetCode/"
+PATH = "../../LeetCode/"
 
 # create a folder with the name of the problem if not exists
 def create_folder(folder_name):
@@ -60,8 +60,10 @@ def extract_problem(url):
     title_l = title.split()[1:] # remove the number
     title = ' '.join(title_l) # join the list
 
+    # scraping difficulty
     difficulty = soup.find('div', class_='mt-3').div.text
 
+    # scraping description
     description_tag = soup.find('div', class_='_1l1MA').contents
 
     # create folder + also checks if the path is valid
@@ -72,6 +74,19 @@ def extract_problem(url):
 
     driver.quit()
 
+def check_url(url):
+    if not url.endswith("/description/"):
+        print("-----------------------------")
+        print("Make sure the URL to the problem ends with /description/")
+        print("-----------------------------")
+        exit()
+
+    if not url.startswith("https://leetcode.com/problems/"):
+        print("-----------------------------")
+        print("Not a LeetCode problem description URL")
+        print("-----------------------------")
+        exit()
+
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: python main.py <url>")
@@ -79,8 +94,6 @@ if __name__ == "__main__":
 
     url = sys.argv[1]
 
-    if not url.startswith("https://leetcode.com/problems/"):
-        print("Invalid URL")
-        exit()
+    check_url(url)
 
     extract_problem(url)
