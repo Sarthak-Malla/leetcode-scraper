@@ -2,6 +2,7 @@ from selenium import webdriver
 import bs4
 import os
 import sys
+import time
 
 # path to my LeetCode git repo
 PATH = "../../LeetCode/"
@@ -50,7 +51,8 @@ def extract_problem(url):
     driver = webdriver.Chrome()
     driver.get(url)
 
-    driver.implicitly_wait(15)
+    driver.implicitly_wait(30)
+    time.sleep(15)
 
     soup = bs4.BeautifulSoup(driver.page_source, 'html.parser')
 
