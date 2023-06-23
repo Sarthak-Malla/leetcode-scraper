@@ -5,7 +5,7 @@ import sys
 import time
 
 # path to my LeetCode git repo
-PATH = "../../LeetCode/"
+PATH = "path/to/your/LeetCode/folder/"
 
 # create a folder with the name of the problem if not exists
 def create_folder(folder_name):
@@ -18,11 +18,12 @@ def create_folder(folder_name):
         os.mkdir(path_)
     else:
         print(f"Folder {folder_name} already exists")
-        exit()
+        scarpe_description = False
 
     print("------------------------------")
     print(f"Folder {folder_name} created!")
     print("------------------------------")
+
 
 # write README.md file
 def write_readme(title, difficulty, description_tag, folder_name):

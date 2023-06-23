@@ -1,0 +1,4 @@
+# .out files
+*.out
+
+venv/ 
