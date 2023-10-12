@@ -5,7 +5,7 @@ import sys
 import time
 
 # path to my LeetCode git repo
-PATH = "../../LeetCode/"
+PATH = "../LeetCode/"
 
 # create a folder with the name of the problem if not exists
 def create_folder(folder_name):
@@ -52,21 +52,22 @@ def extract_problem(url):
     driver.get(url)
 
     driver.implicitly_wait(30)
-    time.sleep(15)
+    time.sleep(3)
 
     soup = bs4.BeautifulSoup(driver.page_source, 'html.parser')
 
     # title
-    title = soup.find('div', class_='h-full').find('span', class_='mr-2').text
-    folder_name = title.strip(); # folder name
-    title_l = title.split()[1:] # remove the number
+    title = soup.find('div', attrs={'class': "flex h-full items-center"}).find('a', class_='mr-2 text-label-1 dark:text-dark-label-1 hover:text-label-1 dark:hover:text-dark-label-1 text-lg font-medium').contents
+    print(title)
+    folder_name = title[0]; # folder name
+    title_l = title[0][1:] # remove the number
     title = ' '.join(title_l) # join the list
 
     # scraping difficulty
     difficulty = soup.find('div', class_='mt-3').div.text
 
     # scraping description
-    description_tag = soup.find('div', class_='_1l1MA').contents
+    description_tag = soup.find('div', class_='xFUwe').contents
 
     # create folder + also checks if the path is valid
     create_folder(folder_name)
